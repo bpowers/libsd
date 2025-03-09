@@ -954,7 +954,7 @@ static const ParseTestData2 PARSE_TESTS2[] = {
 };
 
 static const char *PARSE_TEST_FAILS[] = {
-	"("
+	"(",
 	"(3",
 	"3 +",
 	"3 *",
