@@ -1,7 +1,8 @@
 include config.mk
 
 
-SRC = util.c xml.c project.c parse.c sim.c hash_table.c siphash.c compat/arc4random.c
+SRC = util.c xml.c project.c parse.c sim.c hash_table.c siphash.c
+#compat/arc4random.c
 OBJ = $(SRC:.c=.o)
 
 LIB = libsd.a
@@ -76,10 +77,10 @@ check test: $(TESTS) $(EXE) $(RTEST_CMD)
 	@echo "  TEST  $(TESTS)"
 	$(LCOV) --directory . --zerocounters 2>/dev/null
 	./$(TESTS)
-	./$(RTEST_CMD) ./$(EXE) $(RTEST_DIR)
+	python3 $(RTEST_CMD) ./$(EXE) $(RTEST_DIR)
 
 rtest: $(EXE) $(RTEST_CMD)
-	./$(RTEST_CMD) ./$(EXE) $(RTEST_DIR)
+	python3 $(RTEST_CMD) ./$(EXE) $(RTEST_DIR)
 
 coverage: check
 	./mdl 2>/dev/null || true

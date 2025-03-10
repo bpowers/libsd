@@ -31,7 +31,8 @@ COMMON_FLAGS = \
 	-Werror=pointer-arith \
 #	-fsanitize=address
 
-CPPFLAGS  = -DVERSION=\"$(VERSION)\" -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600
+CPPFLAGS  = -DVERSION=\"$(VERSION)\" -D_DEFAULT_SOURCE -D_BSD_SOURCE
+#CPPFLAGS  = -DVERSION=\"$(VERSION)\" -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600
 CFLAGS   += $(STATIC) -g -std=c11 $(OPT) -pthread $(WARNFLAGS) $(INCS) $(CPPFLAGS) $(COMMON_FLAGS)
 CFLAGS   += -fPIC
 #CFLAGS  += -flto
@@ -40,7 +41,7 @@ CFLAGS   += $(COVFLAGS)
 
 LDFLAGS  += $(STATIC) -g $(OPT) -lm $(COVFLAGS)
 #LDFLAGS  += -fsanitize=address -lunwind
-LDFLAGS  += -Wl,-z,now,-z,relro
+#LDFLAGS  += -Wl,-z,now,-z,relro
 
 #LDFLAGS  +=  -lmesh
 LDFLAGS  += -fPIC
@@ -50,7 +51,7 @@ LCOV     ?= true #lcov
 GENHTML  ?= true #genhtml
 
 AR       ?= llvm-ar
-RANLIB   ?= llvm-ranlib
+RANLIB   ?= ranlib
 
 #AR       = gcc-ar
 #RANLIB   = gcc-ranlib
